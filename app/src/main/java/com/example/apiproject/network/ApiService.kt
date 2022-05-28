@@ -1,6 +1,6 @@
 package com.example.apiproject.network
 
-import com.example.apiproject.model.Response
+import com.example.apiproject.model.ResponseApi
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -15,7 +15,7 @@ private val retrofit =
         .build()
 interface ApiService {
     @GET("/LB524259080HK")
-    fun getAllData (): Call<List<Response>>
+    fun getAllData (): Call<List<ResponseApi>>
 }
 object Api {
     val retrofitService: ApiService by lazy { retrofit.create(ApiService::class.java) }

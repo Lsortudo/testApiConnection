@@ -4,10 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.apiproject.model.Response
+import com.example.apiproject.model.ResponseApi
 import com.example.apiproject.network.Api
 import retrofit2.Call
 import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,10 +24,10 @@ class MainActivity : AppCompatActivity() {
         getAllData()
     }
     fun getAllData(){
-        Api.retrofitService.getAllData().enqueue(object: Callback<List<Response>> {
+        Api.retrofitService.getAllData().enqueue(object: Callback<List<ResponseApi>> {
             override fun onResponse(
-                call: Call<List<Response>>,
-                response: retrofit2.Response<List<Response>>
+                call: Call<List<ResponseApi>>,
+                response: Response<List<ResponseApi>>
             ) {
                 if(response.isSuccessful) {
                     recyclerView = findViewById<RecyclerView>(R.id.recycler_view).apply {
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
             }
 
-            override fun onFailure(call: Call<List<Response>>, t: Throwable) {
+            override fun onFailure(call: Call<List<ResponseApi>>, t: Throwable) {
                 t.printStackTrace()
             }
         })
